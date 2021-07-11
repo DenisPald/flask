@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+Новостная страница
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="h1">Все новости</div>
+    <br>
+    <div class="fs-5 display-6">
+        <div class="row">
+            {% for new in news %}
+                <div class="card" style="width: 18rem;">
+                    <div class= "card-body">
+                        <h5 class="mt-0">{{ new[1] }}</h5>
+                        <p> {{new[2][:20]}}... </p>
+                        <a href="{{ url_for('papers.paper', slug=new[3]) }}" class="stretched-link">Читать полностью</a>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}
