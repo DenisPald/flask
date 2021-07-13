@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 
 import sqlite3
 
@@ -13,6 +13,16 @@ with sqlite3.connect('data.db') as con:
 
 @papers.route('/')
 def index():
+    search = request.args.get('search')
+    if search:
+        search = search.lower().strip()
+        searched_news = []
+        for i in news:
+            if (search in i[1].lower().strip()) or (search
+                                                    in i[2].lower().strip()):
+                searched_news.append(i)
+        return render_template("papers/index.html", news=searched_news)
+
     return render_template("papers/index.html", news=news)
 
 

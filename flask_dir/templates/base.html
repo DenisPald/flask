@@ -25,8 +25,11 @@
                     <a class="nav-link" aria-current="page" href=" {{ url_for('index') }} ">Домашняя</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href=" {{ url_for('papers.index') }} ">Список статей</a>
+                    <a class="nav-link" href=" {{ url_for('papers.index') }} ">Новости</a>
                 </ul>
+                <form class="d-flex" method="GET">
+                  <input class="form-control me-3" type="search" placeholder="Поиск" aria-label="Search" name="search" value="{{request.args.get('search', '')}}">
+                </form>
                 <button class="btn btn-outline-secondary btn-sm">
                   <a class="nav-link link-secondary" href="#">Войти</a>
                 </button>
