@@ -1,7 +1,7 @@
 from flask import Flask
 import sqlite3
 
-from config import DevConfig
+from .config import DevConfig
 
 
 app = Flask(__name__)
