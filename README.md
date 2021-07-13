@@ -6,8 +6,10 @@
 
 ## Запуск ##
 
-#### Переходим в любую пустую папку, открываем терминал и вводим комманду "git clone https://github.com/DenisPald/flask.git" ####
+##### Переходим в любую пустую папку, открываем терминал и вводим комманды #####
 
-#### Создаем виртуальное окружение и вводим "pip install -r requirements.txt" ####
+##### "git clone https://github.com/DenisPald/flask.git" #####
 
-#### Запускаем main.py ####
+##### Создаем виртуальное окружение и вводим "pip install -r requirements.txt" #####
+
+##### Запускаем main.py #####
