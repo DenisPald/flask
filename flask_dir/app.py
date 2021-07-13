@@ -13,7 +13,7 @@ with sqlite3.connect('data.db') as con:
 
     cur.execute("""CREATE TABLE IF NOT EXISTS paper(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        title STRING(128) NOT NULL,
+        title STRING NOT NULL,
         text TEXT NOT NULL,
-        slug STRING(128) NOT NULL UNIQUE
+        slug STRING NOT NULL UNIQUE
         )""")
