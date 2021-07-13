@@ -1,20 +1,16 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect, url_for
 
-import sqlite3
+from .updater import updater
 
 from .form import NewPaper
+from .models import Paper
 
 papers = Blueprint("papers", __name__, template_folder='templates')
-
-with sqlite3.connect('data.db') as con:
-    cur = con.cursor()
-    news = []
-    for i in cur.execute("""SELECT * FROM paper"""):
-        news.append(i)
 
 
 @papers.route('/')
 def index():
+    news = updater()
     search = request.args.get('search')
     if search:
         search = search.lower().strip()
@@ -32,13 +28,20 @@ def index():
 def create():
     form = NewPaper()
     if request.method == "POST":
-        pass  # TODO-сделать работу с бд
+        title = request.form.get("title")
+        text = request.form.get("text")
+        try:
+            Paper(title, text)
+        except Exception:
+            return 'Что-то пошло не так, повторите попытку позже'
+        return redirect(url_for('papers.index'))
 
     return render_template('papers/create_paper.html', form=form)
 
 
 @papers.route("/<slug>")
 def paper(slug):
+    news = updater()
     for new in news:
         if new[3] == slug:
             current_new = new
