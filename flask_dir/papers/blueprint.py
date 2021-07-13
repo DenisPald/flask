@@ -2,6 +2,8 @@ from flask import Blueprint, render_template, request
 
 import sqlite3
 
+from .form import NewPaper
+
 papers = Blueprint("papers", __name__, template_folder='templates')
 
 with sqlite3.connect('data.db') as con:
@@ -26,10 +28,19 @@ def index():
     return render_template("papers/index.html", news=news)
 
 
-@papers.route("<slug>")
+@papers.route("/create", methods=["GET", "POST"])
+def create():
+    form = NewPaper()
+    if request.method == "POST":
+        pass  # TODO-сделать работу с бд
+
+    return render_template('papers/create_paper.html', form=form)
+
+
+@papers.route("/<slug>")
 def paper(slug):
     for new in news:
         if new[3] == slug:
             current_new = new
 
-    return render_template("papers/new.html", new=current_new)
+    return render_template("papers/paper.html", new=current_new)

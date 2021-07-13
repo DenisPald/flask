@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+Создание новости
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    <form action="{{url_for('papers.create')}}" method="POST">
+            {% for i in form %}
+                <div class="mb-3">
+                    {{ i.label(class="form-label") }}
+                    {{ i(class="form-control") }}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-outline-success">Отправить</button>
+    </form>
+
+</div>
+
+{% endblock %}
