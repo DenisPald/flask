@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 
-from .dataconnect.updater import updater
+from .dataconnect.paper_connect import updater
 
 from .form import NewPaper
 from .models import Paper

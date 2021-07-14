@@ -19,13 +19,13 @@ with sqlite3.connect('data.db') as con:
         tag TEXT
         );""")
 
-    cur.execute("""CREATE TABLE IF NOT EXISTS tag (
+    cur.execute("""CREATE TABLE IF NOT EXISTS tag(
 	    id INTEGER PRIMARY KEY AUTOINCREMENT,
 	    name STRING(32) NOT NULL UNIQUE,
-	    slug STRING(64) NOT NULL UNIQUE,
+	    slug STRING(64) NOT NULL UNIQUE
         );""")
 
-    cur.execute("""CREATE TABLE IF NOT EXISTS paper_tag (
+    cur.execute("""CREATE TABLE IF NOT EXISTS paper_tag(
 	    id_paper INTEGER NOT NULL,
 	    id_tag INTEGER NOT NULL,
 	    FOREIGN KEY("id_tag") REFERENCES "tag"("id"),
