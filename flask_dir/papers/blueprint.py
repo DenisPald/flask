@@ -30,10 +30,8 @@ def create():
     if request.method == "POST":
         title = request.form.get("title")
         text = request.form.get("text")
-        try:
-            Paper(title, text)
-        except Exception:
-            return 'Что-то пошло не так, повторите попытку позже'
+        tags = request.form.get("tags").split()
+        Paper(title, text, tags)
         return redirect(url_for('papers.index'))
 
     return render_template('papers/create_paper.html', form=form)
