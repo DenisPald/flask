@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 
 from .dataconnect.paper_connect import updater
+from flask_dir.papers.dataconnect.connect import tag_to_paper, paper_to_tag
 
 from .form import NewPaper
 from .models import Paper
@@ -46,4 +47,6 @@ def paper(slug):
         if new[3] == slug:
             current_new = new
 
-    return render_template("papers/paper.html", new=current_new)
+    tags = paper_to_tag(current_new)
+
+    return render_template("papers/paper.html", new=current_new, tags=tags)

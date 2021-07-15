@@ -6,6 +6,12 @@
 
 {% block body %}
 <div class="container">
+    <div class="row mb-3">
+        {% for tag in tags%}
+            <div class="col btn btn-outline-dark mx-2">{{ tag[1] }}</div>
+        {% endfor%}
+    </div>
+
     <div class="h1">{{ new[1] }}</div>
     <br>
     <div class="fs-5 display-6">
