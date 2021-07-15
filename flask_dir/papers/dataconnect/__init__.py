@@ -1,4 +1,3 @@
-import sqlite3
-
-with sqlite3.connect('data.db', check_same_thread=False) as con:
-    cur = con.cursor()
+from .connect import PaperToTag, TagToPaper
+from .paper_connect import paper_updater
+from .tag_connect import tag_updater

@@ -15,8 +15,7 @@ with sqlite3.connect('data.db') as con:
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         title STRING(32) NOT NULL,
         text TEXT NOT NULL,
-        slug STRING(32) NOT NULL UNIQUE,
-        tag TEXT
+        slug STRING(32) NOT NULL UNIQUE
         );""")
 
     cur.execute("""CREATE TABLE IF NOT EXISTS tag(
