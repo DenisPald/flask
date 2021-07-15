@@ -1,11 +1,11 @@
 from flask import Flask
 import sqlite3
 
-from .config import DevConfig
+from .config import DevConfig as current_config
 
 
 app = Flask(__name__)
-app.config.from_object(DevConfig)
+app.config.from_object(current_config)
 
 
 with sqlite3.connect('data.db') as con:

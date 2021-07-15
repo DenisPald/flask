@@ -27,8 +27,8 @@
                   <li class="nav-item">
                     <a class="nav-link" href=" {{ url_for('papers.index') }} ">Новости</a>
                 </ul>
-                <form class="d-flex" method="GET">
-                  <input class="form-control me-3" type="search" placeholder="Поиск" aria-label="Search" name="search" value="{{request.args.get('search', '')}}">
+                <form class="d-flex" method="GET" action="{{ url_for('papers.index') }}">
+                  <input class="form-control me-3" type="search" placeholder="Поиск" aria-label="Search" name="search" value="{{request.args.get('search', '')}}" autocomplete="off">
                 </form>
                 <button class="btn btn-outline-secondary btn-sm">
                   <a class="nav-link link-secondary" href="#">Войти</a>
