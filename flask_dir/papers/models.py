@@ -1,6 +1,8 @@
 from slugify import slugify
+from flask_login import UserMixin
 
 from .dataconnect.start_connect import cur
+from flask_dir.login import login_manager
 
 
 class Paper():
@@ -32,7 +34,6 @@ class Paper():
         q = """INSERT INTO paper_tag VALUES (?, ?);"""
         for paper_id in papers_id:
             for tag_id in self.tags_id:
-                print(self.tags_id)
                 cur.execute(q, [paper_id, tag_id])
 
 
@@ -50,6 +51,15 @@ class Tag():
     def last(self):
         cur.execute("""SELECT id FROM tag WHERE rowid=last_insert_rowid();""")
         last_id = cur.fetchall()[0][0]
-        print(last_id)
 
         return last_id
+
+class User(UserMixin):
+    def __init__(self, name, password):
+        q = """INSERT INTO users (name, password) VALUES (?, ?)"""
+        cur.execute(q, (name, password))
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.get(user_id)

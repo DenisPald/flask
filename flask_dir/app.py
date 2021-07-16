@@ -30,3 +30,9 @@ with sqlite3.connect('data.db') as con:
 	    FOREIGN KEY("id_tag") REFERENCES "tag"("id"),
 	    FOREIGN KEY("id_paper") REFERENCES "paper"("id")
         );""")
+
+    cur.execute("""CREATE TABLE IF NOT EXISTS users (
+	    id INTEGER PRIMARY KEY AUTOINCREMENT,
+	    name STRING(64) NOT NULL UNIQUE,
+	    password INTEGER NOT NULL
+        );""")
