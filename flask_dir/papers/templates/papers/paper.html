@@ -10,15 +10,9 @@
     <div class="row mb-3">
 
         {% for tag in tags%}
-
-        <div class="col btn btn-outline-dark mx-2">
-            <a href="{{ url_for('papers.tag', slug=tag[2]) }}">
-                <div>
-                    {{ tag[1] }}
-                </div>
-            </a>
-        </div>
-
+        <a class="col btn btn-outline-dark mx-3" href="{{ url_for('papers.tag', slug=tag[2]) }}" role="button">
+            {{ tag[1] }}
+        </a>
         {% endfor%}
 
     </div>
