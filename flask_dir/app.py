@@ -36,3 +36,5 @@ with sqlite3.connect('data.db') as con:
 	    name STRING(64) NOT NULL UNIQUE,
 	    password INTEGER NOT NULL
         );""")
+
+    cur.close()

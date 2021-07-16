@@ -2,7 +2,7 @@ from slugify import slugify
 from flask_login import UserMixin
 
 from .dataconnect.start_connect import cur
-from flask_dir.login import login_manager
+#from flask_dir.login import login_manager
 
 
 class Paper():
@@ -54,12 +54,7 @@ class Tag():
 
         return last_id
 
-class User(UserMixin):
-    def __init__(self, name, password):
-        q = """INSERT INTO users (name, password) VALUES (?, ?)"""
-        cur.execute(q, (name, password))
-
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.get(user_id)
+#class User(UserMixin):
+#    def __init__(self, name, password):
+#        q = """INSERT INTO users (name, password) VALUES (?, ?)"""
+#        cur.execute(q, (name, password))

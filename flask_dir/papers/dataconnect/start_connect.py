@@ -1,4 +1,4 @@
 import sqlite3
 
-with sqlite3.connect('data.db', check_same_thread=False) as con:
+with sqlite3.connect('data.db') as con:
     cur = con.cursor()
