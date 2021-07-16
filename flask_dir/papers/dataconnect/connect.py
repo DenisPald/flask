@@ -7,9 +7,8 @@ class TagToPaper():
             self.tags.append(i[0])
 
     def tag_to_paper(self):
-        col_1 = 'id_tag'
         papers_id = []
-        q = f"""SELECT * FROM paper_tag WHERE {col_1} = ?;"""
+        q = """SELECT * FROM paper_tag WHERE 'id_tag' = ?;"""
         for cur_tag in self.tags:
             if isinstance(cur_tag, int):
                 for i in cur.execute(q, [cur_tag]):
@@ -18,9 +17,8 @@ class TagToPaper():
                 for i in cur.execute(q, [cur_tag[0]]):
                     papers_id.append(i[0])
 
-        col_2 = 'id'
         papers = []
-        q = f"""SELECT * FROM paper WHERE {col_2} = ?;"""
+        q = """SELECT * FROM paper WHERE 'id' = ?;"""
         for cur_paper_id in papers_id:
             for i in cur.execute(q, [cur_paper_id]):
                 papers.append(i)
@@ -34,9 +32,8 @@ class PaperToTag():
             self.papers.append(i[0])
 
     def paper_to_tag(self):
-        col_1 = 'id_paper'
         tags_id = []
-        q = f"""SELECT * FROM paper_tag WHERE {col_1} = ?;"""
+        q = f"""SELECT * FROM paper_tag WHERE 'id_paper' = ?;"""
         for cur_paper in self.papers:
             if isinstance(cur_paper, int):
                 for i in cur.execute(q, [cur_paper]):
@@ -45,9 +42,8 @@ class PaperToTag():
                 for i in cur.execute(q, [cur_paper[0]]):
                     tags_id.append(i[1])
 
-        col_2 = 'id'
         tags = []
-        q = f"""SELECT * FROM tag WHERE {col_2} = ?;"""
+        q = f"""SELECT * FROM tag WHERE 'id' = ?;"""
         for cur_tag_id in tags_id:
             for i in cur.execute(q, [cur_tag_id]):
                 tags.append(i)

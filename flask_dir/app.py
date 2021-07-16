@@ -10,6 +10,7 @@ app.config.from_object(current_config)
 
 with sqlite3.connect('data.db') as con:
     cur = con.cursor()
+    cur.execute("""PRAGMA foreign_keys = ON;""")
 
     cur.execute("""CREATE TABLE IF NOT EXISTS paper(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
