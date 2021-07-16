@@ -28,8 +28,8 @@ def index():
 def create():
     form = NewPaper()
     if request.method == "POST":
-        title = request.form.get("title")
-        text = request.form.get("text")
+        title = str(request.form.get("title"))
+        text = str(request.form.get("text"))
         tags = request.form.get("tags").split()
         Paper(title, text, tags)
         return redirect(url_for('papers.index'))
